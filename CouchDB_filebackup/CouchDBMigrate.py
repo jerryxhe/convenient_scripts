@@ -7,8 +7,8 @@ from couchdb import mapping
 import requests
 import os
 
-local_tmp_dir = "/Users/me/Documents/backup/"
-dbname = 'file_backup'
+local_tmp_dir = "/Users/me/Documents/backup/" # you must change this
+dbname = 'file_backup'                        # you must change this
 
 if not os.path.exists(local_tmp_dir):
     os.makedirs(local_tmp_dir)
@@ -31,7 +31,7 @@ def download_file(url):
 	return local_path
 
 
-server2 = Server("https://{{username}}:{{password}}@xxxxxxx.cloudant.com")
+server2 = Server("https://{{username}}:{{password}}@xxxxxxx.cloudant.com") # you must change this
 db2 = server2[dbname]
 
 all_docs = db.view("_all_docs")
@@ -45,6 +45,6 @@ for doc in docs:
 	attachments = db[doc_id]["_attachments"].items();
 	db2[doc_id]={}
 	for k,v in attachments:
-		local_handle = download_file("https://{{source_endpoint}}.cloudant.com/"+dbname+"/"+doc_id+"/"+k)
+		local_handle = download_file("https://{{source_endpoint}}.cloudant.com/"+dbname+"/"+doc_id+"/"+k) # you must change this
 		db2.put_attachment(db2[doc_id], file(local_handle), filename=None, content_type=None)
 	
