@@ -22,5 +22,5 @@ from datetime import datetime, timedelta
 def smart_sleep(nseconds):
     """a sleep function that guards against computer falling asleep and rewaking and a later time"""
     terminal_time = datetime.now() + timedelta(seconds=(nseconds+10))
-    while(datetimenow() < terminal_time):
-        sleep(120)
+    while(datetime.now() < terminal_time):
+        sleep(120) # check every 2 minutes
