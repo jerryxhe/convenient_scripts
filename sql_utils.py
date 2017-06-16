@@ -6,3 +6,7 @@ def psql_create_syntax(tablename, dbname):
     st = output.index("CREATE TABLE")
     return output[st:]
   
+def camelcase_2_underscore(name):
+    """PostgreSQL does not like upper case"""
+    return "".join(c.isupper() and ("_"+c.lower()) or c
+           for c in name)   
