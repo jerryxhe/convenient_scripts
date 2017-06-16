@@ -1,5 +1,13 @@
 # a collection of useful functions
 
+def first_of(iterator_, condition_):
+    for item in iterator_:
+        try:
+            if condition_(item):
+                return item
+        except Exception as e:
+            pass
+
 def flatten_dict_iter(dic):
     for k,v in dic.iteritems():
         if isinstance(v, int):
