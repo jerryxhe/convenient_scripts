@@ -14,7 +14,7 @@ def camelcase_2_underscore(name):
 class CaseConversion:
     import re
     def __init__(self):
-        self._pattern = re.compile(r'\_(?P<char>?)',re.I)
+        self._pattern = re.compile(r'\_(?P<char>.)',re.I)
     
     def camelcase_2_underscore(self, name):
         """PostgreSQL does not like upper case"""
