@@ -1,2 +1,2 @@
-import string
-def string_split_py2(st):
+def string_strip(st):
+  return st.strip()
