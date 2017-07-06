@@ -9,4 +9,4 @@ def crc32_hash_py3(st):
     
 crc32_hash = crc32_hash_py2 if sys.version[0]=='2' else crc32_hash_py3
 
-__all__ = ['crc_32_hash']
+__all__ = ['crc32_hash']
