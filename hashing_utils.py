@@ -16,5 +16,19 @@ def iter_xls_cols():
     for size in count(1):
         for let in product(ascii_lowercase, repeat=size):
             yield "".join(let)
+            
+class IdManager:
+    def __init__(self, _seen=set()):
+        self.seen = _seen
+    
+    def find_next(self, orig_proposed_id):
+        if orig_proposed_id not in self.seen:
+            return orig_proposed_id
+        for addon in iter_xls_cols():
+            if (orig_proposed_id+addon) not in self.seen:
+                return orig_proposed_id+addon
+    
+    def used(self, used_id):
+        self.seen.add(used_id)
 
 __all__ = ['crc32_hash','iter_xls_cols']
