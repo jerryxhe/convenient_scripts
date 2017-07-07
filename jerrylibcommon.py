@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+
+__author__="Jerry He"
+
 # a collection of useful functions
 
 def get_py_version(_version=None):
