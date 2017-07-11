@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 
-def psql_create_syntax(tablename, dbname):
+def psql_create_syntax_py2(tablename, dbname):
     import subprocess
     output = subprocess.check_output("pg_dump -t \"public.{}\" --schema-only {}".format(tablename,dbname), shell=True)
     st = output.index("CREATE TABLE")
-    return output[st:]
+    return output[st:].replace('\\n', '\n')
   
+def psql_create_syntax_py3(tablename, dbname='intellect'):
+    import subprocess
+    output = str(subprocess.check_output("pg_dump -t \"public.{}\" --schema-only {}".format(tablename,dbname), shell=True))
+    st = output.index("CREATE TABLE")
+    return output[st:].replace('\\n', '\n')
+
 def camelcase_2_underscore(name):
     """PostgreSQL does not like upper case"""
     return "".join(c.isupper() and ("_"+c.lower()) or c
