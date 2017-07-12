@@ -1,5 +1,5 @@
 __author__ = "Jerry He"
-import zlib,sys
+import zlib,sys,hashlib
 
 def crc32_hash_py2(st):
     return zlib.crc32(unicode(st)) & 0xffffffff
@@ -7,6 +7,13 @@ def crc32_hash_py2(st):
 def crc32_hash_py3(st):
     return zlib.crc32(str(st).encode("utf-8")) & 0xffffffff
     
+def compute_md5hash(filename): # compute hash and bytes
+    md5 = hashlib.md5()
+    with open(filename,'rb') as f: 
+        pdf_bytes = f.read()
+        md5.update(pdf_bytes)
+        return md5.hexdigest(),pdf_bytes
+
 crc32_hash = crc32_hash_py2 if sys.version[0]=='2' else crc32_hash_py3
 
 def iter_xls_cols():
