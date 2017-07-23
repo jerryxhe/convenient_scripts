@@ -16,3 +16,27 @@ def remove_punct(word, _punkts=string.punctuation):
 from bs4 import BeautifulSoup
 def remove_html(_text):
     return BeautifulSoup(_text, "lxml").text
+
+class NameStemmer:
+	def __init__(self):
+		_replacements = {'Pharmaceutical':'Pharma', 
+		              'Biopharmaceutical':'Biopharma',
+		              'Therapeutic':'Therap',
+		              'Corporation':'Corp',
+                'Technologie':'Techno',
+                'Technology':'Techno',
+                'Lab':'Lab',
+                'Laboratorie':'Lab',
+                'Laboratory':"Lab"}
+		_patterns = {}
+		import re
+		for k,v in _replacements.items():
+			_patterns[re.compile('.*?\\b'+k+'s?'+'\\b.*?', re.I)]=v
+		self.patterns = _patterns
+	def stem(self, companyname):
+		name = companyname
+		name = name.split(",")[0].strip()
+		name = name.split("(")[0].strip()
+		for pat,v in self.patterns.items():
+				name = "\\W+".join([pat.sub(v, subname) for subname in name.split(" ")])
+		return name
