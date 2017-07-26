@@ -32,12 +32,17 @@ class NameStemmer:
 		_patterns = {}
 		import re
 		for k,v in _replacements.items():
-			_patterns[re.compile('.*?\\b'+k+'s?'+'\\b.*?', re.I)]=v
+			_patterns[re.compile('.*?\\b'+k+'(s|\.)?'+'\\b.*?', re.I|re.U)]=v
 		self.patterns = _patterns
+		self.split_regex = re.compile(r'\W+')
 	def stem(self, companyname):
 		name = companyname
 		name = name.split(",")[0].strip()
 		name = name.split("(")[0].strip()
-		for pat,v in self.patterns.items():
-				name = "\\W+".join([pat.sub(v, subname) for subname in name.split(" ")])
-		return name
+		name_arr = self.split_regex.split(name)
+		for i in range(len(name_arr)):
+			for pat,v in self.patterns.items():
+				if pat.match(name_arr[i]):
+						name_arr[i]=pat.sub(v, name_arr[i])
+		print name_arr
+		return "\\W+".join(filter(lambda st:len(st.strip())>0, name_arr))
