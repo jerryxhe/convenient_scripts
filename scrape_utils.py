@@ -19,6 +19,7 @@ def remove_html(_text):
 
 class NameStemmer:
 	def __init__(self):
+		self.redundant_suffixes = ['Group', 'International','plc', "Ltd", "AG", "Limited", "Ltd", "Inc"]
 		_replacements = {'Pharmaceutical':'(Ph|F)arma', 
 		              'Biopharmaceutical':'Biopharma',
 		              'Therapeutic':'Therap',
