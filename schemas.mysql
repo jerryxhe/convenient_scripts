@@ -1,0 +1,22 @@
+CREATE TABLE alliance (
+   GenericName varchar(255),
+   success bool,
+   nce bool,
+   AccessionNumber int,
+   Originator  varchar(255),
+   TechnologyCategory JSON,
+   webInfo JSON,
+   patentInfo JSON,
+   otherInfo  JSON,
+   Licensor varchar(255),
+   Licensee varchar(255),
+   PrimaryTherapy JSON,
+   AnyTherapy JSON,
+   PrimaryIndication JSON,
+   AnyIndication JSON,
+   PriorityPatents JSON,
+   Stage varchar(255),
+   NoveltyRating int,
+   MarketSizeRating int,
+   SpeedRating int
+);
