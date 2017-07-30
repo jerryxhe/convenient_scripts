@@ -1,3 +1,0 @@
-def wget(url):
-	import urllib
-	return urllib.urlopen(url).read()
