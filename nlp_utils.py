@@ -1,4 +1,4 @@
-syntaxnet_root_dir = "/Users/jerryhe/dev/models/syntaxnet/syntaxnet/models/parsey_universal"
+syntaxnet_root_dir = "/Users/jerryhe/dev/models/syntaxnet"
 
 import subprocess
 def tag(sent, _cmd = '{0}/syntaxnet/models/parsey_universal/parse.sh {0}/Danish'.format(syntaxnet_root_dir)):
