@@ -1,3 +1,6 @@
+# coding: utf-8
+__author__ = "Jerry He"
+
 syntaxnet_root_dir = "/Users/jerryhe/dev/models/syntaxnet"
 
 import subprocess
