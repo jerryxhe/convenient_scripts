@@ -1,7 +1,7 @@
 syntaxnet_root_dir = "/Users/jerryhe/dev/models/syntaxnet"
 
 import subprocess
-def tag(sent, _cmd = '{0}/syntaxnet/models/parsey_universal/parse.sh {0}/Danish'.format(syntaxnet_root_dir)):
+def tag(sent, _cmd = '{0}/syntaxnet/models/parsey_universal/parse.sh {0}/English'.format(syntaxnet_root_dir)):
     read, write = os.pipe()
     os.write(write, sent)
     os.close(write)
